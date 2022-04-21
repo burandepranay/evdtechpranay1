@@ -1,0 +1,30 @@
+<div class="col-md-4 offset-md-4">
+    <h1>Login-Form</h1>
+    <br>
+    <form [formGroup]='signInForm' (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="username" class="form-label">Email</label>
+        <input type="email" class="form-control" id="username" name="usernameField" formControlName="name">
+  
+        <div *ngIf="f.name.touched && f.name.invalid">
+          <div class="text-danger" *ngIf="f.name.errors.required">This Field is required </div>
+          <span class="text-danger" *ngIf="f.name.errors.minlength || f.name.errors.maxlength ">minimum of 5
+            charcters</span>
+        </div>
+      </div>
+  
+  
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" name="passwordField" formControlName="password">
+  
+        <div *ngIf="f.password.touched && f.password.invalid">
+          <div class="text-danger" *ngIf="f.password.required">This Field is required </div>
+          <div class="text-danger" *ngIf="f.password.errors.minlength || f.password.errors.maxlength ">minimum of 5
+            charcters</div>
+        </div>
+      </div>
+  
+      <button type="submit" [disabled]="signInForm.invalid" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
